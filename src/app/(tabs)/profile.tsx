@@ -1,10 +1,12 @@
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
 import { GlassPanel } from '../../components/GlassPanel';
+import { useAuth } from '@clerk/clerk-expo';
 import { Icon } from '../../components/Icon';
 import { useRouter } from 'expo-router';
 
 export default function ProfileScreen() {
+  const { signOut } = useAuth();
   const router = useRouter();
 
   return (
@@ -229,7 +231,7 @@ export default function ProfileScreen() {
                   <Icon name="chevron_right" size={20} color="#b9cacb" />
                 </TouchableOpacity>
                 <TouchableOpacity 
-                  onPress={() => router.replace('/')}
+                  onPress={async () => { await signOut(); }}
                   className="flex-row items-center justify-between p-3 rounded-xl mt-2 border-t border-white/5 pt-4"
                 >
                   <View className="flex-row items-center gap-3">

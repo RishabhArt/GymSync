@@ -3,8 +3,10 @@ import { ScrollView, View, Text, TouchableOpacity, Image, ImageBackground, Style
 import { GlassPanel } from '../../components/GlassPanel';
 import { Icon } from '../../components/Icon';
 import Svg, { Circle } from 'react-native-svg';
+import { useUser } from '@clerk/clerk-expo';
 
 export default function DashboardScreen() {
+  const { user } = useUser();
   return (
     <View className="flex-1 bg-background">
       {/* Background Lighting Effect */}
@@ -18,12 +20,14 @@ export default function DashboardScreen() {
           <View className="flex-row items-center gap-3">
             <View className="w-10 h-10 rounded-full border border-white/10 overflow-hidden bg-surface-container/50">
               <Image
-                source={require('../../../assets/images/logo-glow.png')}
+                source={user?.imageUrl ? { uri: user.imageUrl } : require('../../../assets/images/logo-glow.png')}
                 className="w-full h-full"
                 resizeMode="cover"
               />
             </View>
-            <Text className="font-headline-lg-mobile text-[24px] font-bold text-on-surface">Gym Sync</Text>
+            <Text className="font-headline-lg-mobile text-[24px] font-bold text-on-surface">
+              {user?.firstName || user?.emailAddresses?.[0]?.emailAddress?.split('@')[0] || 'Athlete'}
+            </Text>
           </View>
           <TouchableOpacity className="p-2 hover:bg-white/5 rounded-full transition-colors">
             <Icon name="settings" size={24} color="#b9cacb" />

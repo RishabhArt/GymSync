@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image, Switch } from 'react-native';
 import { GlassPanel } from '../components/GlassPanel';
+import { useAuth } from '@clerk/clerk-expo';
 import { Icon } from '../components/Icon';
 import { useRouter, Link } from 'expo-router';
 
 export default function SettingsScreen() {
+  const { signOut } = useAuth();
   const router = useRouter();
   
   const [healthSync, setHealthSync] = useState(true);
