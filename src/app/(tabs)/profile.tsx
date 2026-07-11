@@ -228,7 +228,10 @@ export default function ProfileScreen() {
                   </View>
                   <Icon name="chevron_right" size={20} color="#b9cacb" />
                 </TouchableOpacity>
-                <TouchableOpacity className="flex-row items-center justify-between p-3 rounded-xl mt-2 border-t border-white/5 pt-4">
+                <TouchableOpacity 
+                  onPress={() => router.replace('/')}
+                  className="flex-row items-center justify-between p-3 rounded-xl mt-2 border-t border-white/5 pt-4"
+                >
                   <View className="flex-row items-center gap-3">
                     <Icon name="logout" size={20} color="#ffb4ab" />
                     <Text className="text-error font-body-md text-[16px]">Sign Out</Text>

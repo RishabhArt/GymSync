@@ -195,7 +195,10 @@ export default function SettingsScreen() {
 
           {/* Log Out Button */}
           <View className="mb-12 flex-row justify-center mt-4">
-            <TouchableOpacity className="px-8 py-3 rounded-full border border-error/30 flex-row items-center gap-2 active:scale-95">
+            <TouchableOpacity 
+              onPress={() => router.replace('/')}
+              className="px-8 py-3 rounded-full border border-error/30 flex-row items-center gap-2 active:scale-95"
+            >
               <Icon name="logout" size={16} color="#ffb4ab" />
               <Text className="text-error font-label-caps text-label-caps uppercase font-bold">LOG OUT</Text>
             </TouchableOpacity>

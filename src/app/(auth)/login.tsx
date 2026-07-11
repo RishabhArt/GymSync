@@ -11,7 +11,7 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     // Navigate to the main app dashboard
-    router.replace('/(tabs)');
+    router.replace('/(tabs)/dashboard');
   };
 
   return (
@@ -31,8 +31,10 @@ export default function LoginScreen() {
           <View className="relative mb-6">
             <View className="absolute inset-0 bg-primary-container opacity-20 rounded-full blur-2xl" />
             <Image
-              source={require('../../../assets/images/logo-glow.png')}
-              className="w-24 h-24 rounded-2xl relative z-10 border border-white/10"
+              source={require('../../../assets/images/gym_sync_auth_logo.png')}
+              style={{ width: 96, height: 96, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
+              className="relative z-10"
+              resizeMode="contain"
             />
           </View>
           <Text className="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary text-center">

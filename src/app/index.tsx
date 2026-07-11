@@ -5,14 +5,6 @@ import { useRouter } from 'expo-router';
 export default function SplashScreen() {
   const router = useRouter();
 
-  useEffect(() => {
-    // Navigate to login after 3 seconds
-    const timer = setTimeout(() => {
-      router.replace('/(auth)/login');
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [router]);
-
   return (
     <View className="flex-1 bg-background items-center justify-center relative overflow-hidden">
       {/* Ambient Background Lighting */}
@@ -26,8 +18,9 @@ export default function SplashScreen() {
         <View className="relative items-center justify-center mb-8">
           <View className="absolute inset-0 bg-primary-fixed-dim/30 rounded-full blur-2xl" />
           <Image
-            source={require('../../assets/images/logo-glow.png')}
-            className="w-32 h-32 md:w-48 md:h-48 rounded-3xl border border-white/10 bg-surface-container/50"
+            source={require('../../assets/images/gym_sync_welcome_logo.png')}
+            style={{ width: 120, height: 120, borderRadius: 24, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
+            className="bg-surface-container/50"
             resizeMode="contain"
           />
         </View>
@@ -40,12 +33,6 @@ export default function SplashScreen() {
           <Text className="font-body-md text-body-md text-on-surface-variant tracking-wide mt-2">
             Premium AI Fitness Coach
           </Text>
-        </View>
-
-        {/* Loading Indicator */}
-        <View className="absolute bottom-40 w-48 h-1 bg-surface-container-highest rounded-full overflow-hidden">
-          {/* We use 50% width to simulate loading */}
-          <View className="h-full bg-primary-fixed-dim w-1/2 rounded-full" />
         </View>
 
         {/* Manual Navigation Button (Fallback) */}

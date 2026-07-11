@@ -43,7 +43,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="dashboard"
         options={{
           title: 'Metrics',
           tabBarIcon: ({ color }) => <Icon name="monitoring" color={color} size={24} />,
