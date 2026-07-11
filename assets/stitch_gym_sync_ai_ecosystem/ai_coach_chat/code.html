@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gym Sync - AI Coach</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Geist:wght@400;500;600&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#dce4e4",
+                        "tertiary-container": "#71f1c7",
+                        "primary": "#e1fdff",
+                        "primary-fixed": "#74f5ff",
+                        "surface-container-lowest": "#080f10",
+                        "on-tertiary": "#003829",
+                        "on-primary-container": "#006a71",
+                        "on-secondary": "#2b3040",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "on-secondary-container": "#b0b4c9",
+                        "surface-container": "#192122",
+                        "surface": "#0d1515",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-container": "#006d53",
+                        "on-surface": "#dce4e4",
+                        "on-primary": "#00363a",
+                        "secondary-fixed-dim": "#c2c6db",
+                        "surface-container-highest": "#2e3637",
+                        "tertiary-fixed-dim": "#5adcb3",
+                        "background": "#0d1515",
+                        "surface-tint": "#00dbe7",
+                        "on-secondary-fixed": "#161b2b",
+                        "secondary": "#c2c6db",
+                        "surface-variant": "#2e3637",
+                        "inverse-primary": "#00696f",
+                        "on-error": "#690005",
+                        "surface-dim": "#0d1515",
+                        "surface-bright": "#333b3b",
+                        "secondary-fixed": "#dee1f7",
+                        "outline": "#849495",
+                        "on-tertiary-fixed": "#002117",
+                        "primary-container": "#00f2ff",
+                        "surface-container-high": "#232b2c",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed-variant": "#414658",
+                        "surface-container-low": "#151d1e",
+                        "on-primary-fixed": "#002022",
+                        "on-background": "#dce4e4",
+                        "inverse-on-surface": "#2a3232",
+                        "primary-fixed-dim": "#00dbe7",
+                        "tertiary": "#ddffef",
+                        "tertiary-fixed": "#79f9ce",
+                        "secondary-container": "#414658",
+                        "outline-variant": "#3a494b",
+                        "on-surface-variant": "#b9cacb",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "card-padding": "24px",
+                        "unit": "8px",
+                        "section-gap": "48px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-caps": ["Geist"],
+                        "metric-xl": ["Geist"],
+                        "hero-display": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "600" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+                        "metric-xl": ["40px", { "lineHeight": "40px", "letterSpacing": "-0.04em", "fontWeight": "500" }],
+                        "hero-display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(25, 33, 34, 0.4);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .ai-bubble-glow {
+            box-shadow: inset 0 0 20px rgba(0, 219, 231, 0.05), 0 10px 30px rgba(0, 219, 231, 0.1);
+        }
+
+        .ai-aura {
+            animation: pulse-aura 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-aura {
+            0%, 100% { opacity: 0.3; transform: scale(0.9); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Hide scrollbar for cleaner UI */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased overflow-hidden selection:bg-primary-fixed-dim selection:text-on-primary">
+<!-- Spotlights -->
+<div class="fixed inset-0 pointer-events-none z-[-1]">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary-fixed-dim/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-tertiary-fixed-dim/5 blur-[100px]"></div>
+</div>
+<!-- TopAppBar (Web & Mobile) -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-3xl border-b border-white/10 shadow-[0px_10px_30px_rgba(0,219,231,0.1)] flex justify-between items-center px-container-margin py-unit h-16">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-white/10 overflow-hidden shrink-0">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A stylized, low-poly 3D avatar of an athlete wearing a futuristic VR headset. The lighting is high-contrast, with neon cyan highlights cutting through deep, dark background shadows. Minimalist, premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvpXgG0GfD8NbtIB4S7qYHOlEawUHhD6tukIXLjbrjQtvT7dyDXJ6UUms6uywXG9KVTAA-a3tL13ZrJuUzHvx7q58CFvWbWupJ_5cMmhXLdkK7cc4rh5oyRqXVwFcRWBWEAXDIzE8WgRMbABEUVzwVeVMWkvpuOwIwd5zQY9wtrMwdoz8n_Oxt9Y5Ju7pRAjS5oYfH1yAwB6kcyQISEoW1fjzbOVMzl205-Z13qXiwMvtqlRCbRJq-58er_m2t9dvPg3keXkPbTjYq"/>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Gym Sync</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</header>
+<!-- Main Chat Canvas -->
+<main class="flex-1 mt-16 mb-24 flex flex-col w-full max-w-3xl mx-auto relative px-container-margin pt-section-gap">
+<!-- Header / Status -->
+<div class="flex flex-col items-center justify-center mb-8 gap-2">
+<div class="relative">
+<div class="absolute -inset-2 bg-primary-fixed-dim/20 rounded-full blur-md ai-aura"></div>
+<div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center relative z-10 border-primary-fixed-dim/30">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface text-center">AI Coach</h1>
+<div class="flex items-center gap-1.5 bg-surface-container-high px-3 py-1 rounded-full border border-white/5">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ONLINE</span>
+</div>
+</div>
+<!-- Chat History -->
+<div class="flex-1 overflow-y-auto flex flex-col gap-6 pb-section-gap">
+<!-- Date Divider -->
+<div class="flex justify-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant/50 uppercase tracking-widest">Today</span>
+</div>
+<!-- AI Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="glass-panel ai-bubble-glow rounded-2xl rounded-tl-sm p-4 text-on-surface relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed-dim/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<p class="relative z-10 leading-relaxed">Good morning! Your resting heart rate is slightly elevated today. Ready for a lighter recovery session, or do you want to push through the planned heavy lifts?</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/50 ml-1">08:15 AM</span>
+</div>
+<!-- User Message -->
+<div class="flex flex-col gap-2 max-w-[85%] self-end">
+<div class="bg-primary-fixed-dim text-on-primary rounded-2xl rounded-tr-sm p-4 shadow-[0_10px_20px_rgba(0,219,231,0.15)] font-medium">
+<p class="leading-relaxed">Let's stick to the heavy lifts. I feel good. Can you review my squat form from yesterday first?</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/50 mr-1 self-end">08:17 AM</span>
+</div>
+<!-- AI Message with Attachment -->
+<div class="flex flex-col gap-2 max-w-[85%] self-start">
+<div class="glass-panel ai-bubble-glow rounded-2xl rounded-tl-sm p-4 text-on-surface">
+<p class="leading-relaxed mb-4">Analyzing yesterday's squat data... Your depth is excellent, but your bar path shifts forward slightly out of the hole.</p>
+<!-- Nested Data Card -->
+<div class="bg-surface-container-high rounded-xl p-3 border border-white/5 flex gap-3 items-center">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary-container">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">BAR PATH ANALYSIS</span>
+<span class="text-sm font-medium text-on-surface">3.2cm Forward Deviation</span>
+</div>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant/50 ml-1">08:18 AM</span>
+</div>
+</div>
+</main>
+<!-- Bottom Input Area (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-gradient-to-t from-background via-background/90 to-transparent pb-24 pt-8 px-4 flex flex-col items-center">
+<!-- Quick Actions -->
+<div class="flex gap-2 w-full max-w-3xl overflow-x-auto pb-4 no-scrollbar px-container-margin justify-center md:justify-start">
+<button class="shrink-0 glass-panel hover:bg-white/5 border-white/10 px-4 py-2 rounded-full flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 0;">videocam</span>
+<span class="text-sm font-medium text-on-surface">Form Check</span>
+</button>
+<button class="shrink-0 glass-panel hover:bg-white/5 border-white/10 px-4 py-2 rounded-full flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-tertiary-container text-sm" style="font-variation-settings: 'FILL' 0;">restaurant</span>
+<span class="text-sm font-medium text-on-surface">Meal Idea</span>
+</button>
+<button class="shrink-0 glass-panel hover:bg-white/5 border-white/10 px-4 py-2 rounded-full flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 0;">self_improvement</span>
+<span class="text-sm font-medium text-on-surface">Recovery Tip</span>
+</button>
+</div>
+<!-- Input Field -->
+<div class="w-full max-w-3xl px-container-margin">
+<div class="relative flex items-end gap-2 glass-panel rounded-3xl p-2 border-white/20 shadow-2xl">
+<button class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary-fixed-dim transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-on-surface resize-none py-3 placeholder:text-on-surface-variant/50 max-h-32 font-body-md" placeholder="Ask your coach..." rows="1" style="min-height: 44px;"></textarea>
+<button class="w-10 h-10 shrink-0 rounded-full bg-primary-fixed-dim text-on-primary flex items-center justify-center shadow-[0_0_15px_rgba(0,219,231,0.4)] hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_upward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fitness_center</span>
+<span class="font-label-caps text-label-caps mt-1">Workout</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+<span class="font-label-caps text-label-caps mt-1">Metrics</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary-fixed-dim font-bold bg-primary-fixed-dim/10 rounded-full px-4 py-1 scale-90 duration-150 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-caps text-label-caps mt-1">AI Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary-fixed" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

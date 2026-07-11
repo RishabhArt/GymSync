@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass-panel {
+    background-color: rgba(25, 33, 34, 0.4);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.glow-effect {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(0, 219, 231, 0.15) 0%, rgba(13, 21, 21, 0) 60%);
+    top: -25%;
+    left: -25%;
+    z-index: -1;
+    pointer-events: none;
+}

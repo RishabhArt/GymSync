@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gym Sync - Active Workout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Geist:wght@500;600&amp;family=Inter:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#dce4e4",
+                      "tertiary-container": "#71f1c7",
+                      "primary": "#e1fdff",
+                      "primary-fixed": "#74f5ff",
+                      "surface-container-lowest": "#080f10",
+                      "on-tertiary": "#003829",
+                      "on-primary-container": "#006a71",
+                      "on-secondary": "#2b3040",
+                      "on-tertiary-fixed-variant": "#00513d",
+                      "on-secondary-container": "#b0b4c9",
+                      "surface-container": "#192122",
+                      "surface": "#0d1515",
+                      "on-primary-fixed-variant": "#004f54",
+                      "on-tertiary-container": "#006d53",
+                      "on-surface": "#dce4e4",
+                      "on-primary": "#00363a",
+                      "secondary-fixed-dim": "#c2c6db",
+                      "surface-container-highest": "#2e3637",
+                      "tertiary-fixed-dim": "#5adcb3",
+                      "background": "#0d1515",
+                      "surface-tint": "#00dbe7",
+                      "on-secondary-fixed": "#161b2b",
+                      "secondary": "#c2c6db",
+                      "surface-variant": "#2e3637",
+                      "inverse-primary": "#00696f",
+                      "on-error": "#690005",
+                      "surface-dim": "#0d1515",
+                      "surface-bright": "#333b3b",
+                      "secondary-fixed": "#dee1f7",
+                      "outline": "#849495",
+                      "on-tertiary-fixed": "#002117",
+                      "primary-container": "#00f2ff",
+                      "surface-container-high": "#232b2c",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed-variant": "#414658",
+                      "surface-container-low": "#151d1e",
+                      "on-primary-fixed": "#002022",
+                      "on-background": "#dce4e4",
+                      "inverse-on-surface": "#2a3232",
+                      "primary-fixed-dim": "#00dbe7",
+                      "tertiary": "#ddffef",
+                      "tertiary-fixed": "#79f9ce",
+                      "secondary-container": "#414658",
+                      "outline-variant": "#3a494b",
+                      "on-surface-variant": "#b9cacb",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "container-margin": "24px",
+                      "card-padding": "24px",
+                      "unit": "8px",
+                      "section-gap": "48px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "metric-xl": [
+                              "Geist"
+                      ],
+                      "hero-display": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.08em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "metric-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "hero-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.5s ease-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        .ambient-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(0, 219, 231, 0.15) 0%, rgba(13, 21, 21, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Background Layering -->
+<div class="fixed inset-0 z-[-2] bg-surface"></div>
+<div class="fixed inset-0 z-[-1] ambient-glow"></div>
+<!-- Top Navigation (Active Workout - Intent: Focused Journey, suppress bottom nav) -->
+<header class="flex justify-between items-center w-full px-container-margin py-unit h-16 bg-surface/60 backdrop-blur-3xl border-b border-white/10 shadow-[0px_10px_30px_rgba(0,219,231,0.1)] sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<button class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors h-10 w-10 flex items-center justify-center rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim">CURRENT EXERCISE</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">Barbell Squats</h1>
+</div>
+</div>
+<button class="bg-primary-fixed-dim/10 text-primary-fixed-dim font-label-caps text-label-caps px-4 py-2 rounded-full border border-primary-fixed-dim/30 hover:bg-white/5 transition-colors active:scale-95 duration-200">
+            Finish
+        </button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-container-margin py-section-gap gap-section-gap max-w-4xl mx-auto w-full relative z-10">
+<!-- Active Set Card -->
+<section class="glass-card rounded-xl p-card-padding flex flex-col gap-6 relative overflow-hidden">
+<!-- Top stats -->
+<div class="flex justify-between items-center w-full">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SET PROGRESS</span>
+<span class="font-metric-xl text-metric-xl text-on-surface">2 <span class="text-on-surface-variant text-[24px]">/ 4</span></span>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">REPS</span>
+<span class="font-metric-xl text-metric-xl text-primary-fixed-dim">8</span>
+</div>
+<div class="h-12 w-[1px] bg-white/10"></div>
+<div class="flex flex-col items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">WEIGHT</span>
+<span class="font-metric-xl text-metric-xl text-primary-fixed-dim">100<span class="text-on-surface-variant text-[24px]">kg</span></span>
+</div>
+</div>
+</div>
+<!-- Rest Timer Ring -->
+<div class="flex justify-center items-center py-4 relative">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<!-- Background Track -->
+<circle class="text-white/5 stroke-current" cx="50" cy="50" fill="transparent" r="46" stroke-width="4"></circle>
+<!-- Progress Ring (Recovery Purple roughly translated to tertiary-fixed-dim/primary-fixed mapping for this theme) -->
+<circle class="text-tertiary-fixed-dim stroke-current progress-ring-circle" cx="50" cy="50" fill="transparent" r="46" stroke-dasharray="289.026" stroke-dashoffset="100" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-metric-xl text-metric-xl text-on-surface">45<span class="text-on-surface-variant text-[20px]">s</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">REST</span>
+</div>
+</div>
+</div>
+<!-- Primary Controls -->
+<div class="flex gap-4 w-full mt-2">
+<button class="flex-1 bg-primary-fixed-dim text-on-primary font-label-caps text-label-caps py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,219,231,0.2)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                     DONE
+                 </button>
+<button class="flex-1 glass-card text-on-surface font-label-caps text-label-caps py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-all hover:bg-white/10">
+<span class="material-symbols-outlined">pause</span>
+                     PAUSE
+                 </button>
+<button class="w-14 glass-card text-on-surface-variant rounded-xl flex items-center justify-center active:scale-95 transition-all hover:bg-white/10 hover:text-on-surface">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</div>
+</section>
+<!-- Upcoming Exercises -->
+<section class="flex flex-col gap-unit w-full">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-2">UPCOMING EXERCISES</h2>
+<div class="glass-card rounded-xl flex flex-col">
+<div class="flex items-center justify-between p-4 border-b border-white/5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="font-label-caps text-label-caps">2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-medium">Leg Press</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">3 SETS • 10-12 REPS</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-4">
+<div class="flex items-center gap-4 opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="font-label-caps text-label-caps">3</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-medium">Calf Raises</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">4 SETS • 15 REPS</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-50">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

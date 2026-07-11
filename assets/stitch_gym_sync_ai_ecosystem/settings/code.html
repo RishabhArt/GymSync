@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gym Sync Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400&amp;family=Geist:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#006d53",
+                        "inverse-surface": "#dce4e4",
+                        "surface-dim": "#0d1515",
+                        "surface-container-lowest": "#080f10",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#2a3232",
+                        "outline": "#849495",
+                        "on-surface": "#dce4e4",
+                        "surface-tint": "#00dbe7",
+                        "tertiary-fixed": "#79f9ce",
+                        "secondary-fixed-dim": "#c2c6db",
+                        "surface-container": "#192122",
+                        "surface-variant": "#2e3637",
+                        "secondary-fixed": "#dee1f7",
+                        "secondary-container": "#414658",
+                        "surface": "#0d1515",
+                        "on-secondary-fixed": "#161b2b",
+                        "on-secondary": "#2b3040",
+                        "background": "#0d1515",
+                        "primary-fixed": "#74f5ff",
+                        "on-background": "#dce4e4",
+                        "tertiary-fixed-dim": "#5adcb3",
+                        "on-primary-fixed": "#002022",
+                        "secondary": "#c2c6db",
+                        "outline-variant": "#3a494b",
+                        "on-tertiary-fixed": "#002117",
+                        "tertiary-container": "#71f1c7",
+                        "tertiary": "#ddffef",
+                        "primary-container": "#00f2ff",
+                        "on-tertiary": "#003829",
+                        "on-secondary-fixed-variant": "#414658",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-highest": "#2e3637",
+                        "surface-container-high": "#232b2c",
+                        "primary": "#e1fdff",
+                        "on-primary-fixed-variant": "#004f54",
+                        "on-tertiary-fixed-variant": "#00513d",
+                        "surface-container-low": "#151d1e",
+                        "surface-bright": "#333b3b",
+                        "on-error": "#690005",
+                        "on-secondary-container": "#b0b4c9",
+                        "on-primary-container": "#006a71",
+                        "inverse-primary": "#00696f",
+                        "error": "#ffb4ab",
+                        "on-primary": "#00363a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "48px",
+                        "gutter": "16px",
+                        "container-margin": "24px",
+                        "card-padding": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "hero-display": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "headline-lg": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "body-md": [
+                            "Inter"
+                        ],
+                        "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "label-caps": [
+                            "Geist"
+                        ],
+                        "metric-xl": [
+                            "Geist"
+                        ]
+                    },
+                    "fontSize": {
+                        "hero-display": [
+                            "48px",
+                            {
+                                "lineHeight": "56px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "headline-lg": [
+                            "32px",
+                            {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-lg-mobile": [
+                            "28px",
+                            {
+                                "lineHeight": "34px",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "label-caps": [
+                            "12px",
+                            {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.08em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "metric-xl": [
+                            "40px",
+                            {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.04em",
+                                "fontWeight": "500"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(25, 33, 34, 0.4);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .list-item-border {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .list-item-border:last-child {
+            border-bottom: none;
+        }
+
+        /* Tonal Layering gradient mask */
+        .spotlight-bg {
+            background: radial-gradient(circle at 50% -20%, rgba(0, 219, 231, 0.08) 0%, transparent 60%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md antialiased spotlight-bg pb-24">
+<!-- Top Navigation (Contextual: Task-focused departure from main nav) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl dark:bg-surface/80 shadow-[0_10px_30px_rgba(0,219,231,0.05)] border-b border-white/5 transition-transform duration-300">
+<div class="flex items-center justify-between px-gutter h-16 w-full max-w-3xl mx-auto">
+<button class="flex items-center justify-center p-2 text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back_ios</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary dark:text-primary-fixed tracking-tight">Settings</h1>
+<div class="w-10"></div> <!-- Spacer for center alignment -->
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 px-gutter max-w-3xl mx-auto">
+<!-- User Profile Quick Header -->
+<div class="flex items-center gap-4 mb-section-gap">
+<div class="w-16 h-16 rounded-full overflow-hidden border border-white/10 shadow-[0_10px_30px_rgba(0,219,231,0.1)]">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-contrast portrait of a fit individual with dramatic studio lighting against a dark minimalist background. The style is ultra-modern, crisp, and evokes premium athleticism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZZwXNwHO5xhMh4GNQRfiQ6IiS8c49_kRY0taOP61hKok_I0FW9PA42gFQdY0-0uXxFJxjb7RxKMqAXyedAqE4X63UwLSHrYsm9NbTClbKIQaEGySR_4GbQBlVScZZc_j4ZbwAJugf8AM5BtjYs_PoepA9SDR0SjkWW5B4V7iKEFBfnkQV61h5lwLrmlE57flXT3Jb6MxHdJ4y8B3bKprjB5XIQYQrhgOZHwvwC1yK0JTxJoBzcQIr7amx05kV4COgACQvgBO95q1h"/>
+</div>
+<div>
+<h2 class="font-headline-lg-mobile text-xl text-primary">Alex Mercer</h2>
+<p class="text-on-surface-variant text-sm mt-1 font-label-caps tracking-wider">Premium Member</p>
+</div>
+</div>
+<!-- Section: App Preferences -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest pl-2">App Preferences</h3>
+<div class="glass-card rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">dark_mode</span>
+<span class="text-on-surface">Appearance</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">Dark</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</div>
+</a>
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 0;">language</span>
+<span class="text-on-surface">Language</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">English</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</div>
+</a>
+</div>
+</section>
+<!-- Section: Workout -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest pl-2">Workout</h3>
+<div class="glass-card rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 0;">timer</span>
+<span class="text-on-surface">Rest Timer Default</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">60s</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</div>
+</a>
+<div class="flex items-center justify-between p-card-padding list-item-border">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
+<span class="text-on-surface">Apple Health Sync</span>
+</div>
+<!-- Custom Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-fixed-dim shadow-[0_0_15px_rgba(0,219,231,0.2)]"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section: AI & Voice -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest pl-2">AI &amp; Voice</h3>
+<div class="glass-card rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)] relative">
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200 relative z-10" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="text-on-surface">Coach Personality</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">Aggressive</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</div>
+</a>
+<div class="flex items-center justify-between p-card-padding list-item-border relative z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary-fixed" style="font-variation-settings: 'FILL' 0;">mic</span>
+<span class="text-on-surface">Voice Activation</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-fixed-dim"></div>
+</label>
+</div>
+<!-- Subtle glow decoration behind AI section -->
+<div class="absolute inset-0 bg-primary-fixed/5 blur-3xl z-0 pointer-events-none rounded-xl"></div>
+</div>
+</section>
+<!-- Section: Account & Security -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest pl-2">Account &amp; Security</h3>
+<div class="glass-card rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="text-on-surface">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">credit_card</span>
+<span class="text-on-surface">Subscription</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant text-sm">Active</span>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</div>
+</a>
+<div class="flex items-center justify-between p-card-padding list-item-border">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 0;">face</span>
+<span class="text-on-surface">Face ID Unlocking</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-fixed-dim shadow-[0_0_15px_rgba(0,219,231,0.2)]"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section: Support -->
+<section class="mb-section-gap">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-unit uppercase tracking-widest pl-2">Support</h3>
+<div class="glass-card rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+<a class="flex items-center justify-between p-card-padding list-item-border hover:bg-white/5 transition-colors active:scale-[0.98] duration-200" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 0;">help</span>
+<span class="text-on-surface">Help Center</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-sm">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- Log Out Button -->
+<div class="mt-section-gap mb-12 flex justify-center">
+<button class="px-8 py-3 rounded-full border border-error/30 text-error hover:bg-error/10 transition-colors duration-300 active:scale-95 flex items-center gap-2 font-label-caps">
+<span class="material-symbols-outlined text-sm">logout</span>
+                 LOG OUT
+             </button>
+</div>
+</main>
+<script>
+        // Simple header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-[0_10px_30px_rgba(0,219,231,0.1)]');
+                header.classList.remove('shadow-[0_10px_30px_rgba(0,219,231,0.05)]');
+            } else {
+                header.classList.add('shadow-[0_10px_30px_rgba(0,219,231,0.05)]');
+                header.classList.remove('shadow-[0_10px_30px_rgba(0,219,231,0.1)]');
+            }
+        });
+    </script>
+</body></html>
