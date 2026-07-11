@@ -19,10 +19,14 @@ const ICON_MAP: Record<string, keyof typeof MaterialCommunityIcons.glyphMap> = {
   'restaurant': 'food-apple',
   'self_improvement': 'yoga',
   'add_circle': 'plus-circle',
+  'add_circle_outline': 'plus-circle-outline',
   'arrow_upward': 'arrow-up',
   'arrow_back_ios': 'chevron-left',
   'arrow_back': 'arrow-left',
   'more_horiz': 'dots-horizontal',
+  'bookmark_border': 'bookmark-outline',
+  'bookmark': 'bookmark',
+  'auto_awesome': 'star-four-points',
   // Settings
   'timer': 'timer-outline',
   'monitor_heart': 'heart-pulse',
@@ -40,6 +44,7 @@ const ICON_MAP: Record<string, keyof typeof MaterialCommunityIcons.glyphMap> = {
   'fullscreen': 'fullscreen',
   'science': 'flask',
   'analytics': 'chart-bar',
+  'bar_chart': 'chart-bar',
   // Profile
   'search': 'magnify',
   'verified': 'check-decagram',

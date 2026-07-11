@@ -2,10 +2,11 @@ import React from 'react';
 import { ScrollView, View, Text, TextInput, TouchableOpacity, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import { GlassPanel } from '../../components/GlassPanel';
 import { Icon } from '../../components/Icon';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function CoachScreen() {
-  const tabBarHeight = useBottomTabBarHeight();
+  const insets = useSafeAreaInsets();
+  const tabBarHeight = (Platform.OS === 'ios' ? 88 : 70) + insets.bottom;
   return (
     <KeyboardAvoidingView 
       className="flex-1 bg-background" 
