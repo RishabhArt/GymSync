@@ -211,7 +211,7 @@ export default function ProfileScreen() {
                 <Text className="font-headline-lg-mobile text-[18px] font-semibold text-primary">Account</Text>
               </View>
               <View className="p-2">
-                <TouchableOpacity className="flex-row items-center justify-between p-3 rounded-xl">
+                <TouchableOpacity onPress={() => router.push('/subscription')} className="flex-row items-center justify-between p-3 rounded-xl">
                   <View className="flex-row items-center gap-3">
                     <Icon name="subscriptions" size={20} color="#b9cacb" />
                     <Text className="text-on-surface font-body-md text-[16px]">Subscription</Text>

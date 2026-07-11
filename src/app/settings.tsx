@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, Image, Switch } from 'react-native';
 import { GlassPanel } from '../components/GlassPanel';
 import { Icon } from '../components/Icon';
-import { useRouter } from 'expo-router';
+import { useRouter, Link } from 'expo-router';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -20,7 +20,10 @@ export default function SettingsScreen() {
         
         {/* Top Navigation */}
         <View className="flex-row items-center justify-between px-gutter h-16 mt-8 z-50">
-          <TouchableOpacity onPress={() => router.back()} className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 active:scale-95">
+          <TouchableOpacity 
+            onPress={() => router.replace('/profile')} 
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 active:scale-95"
+          >
             <Icon name="arrow_back_ios" size={20} color="#b9cacb" />
           </TouchableOpacity>
           <Text className="font-headline-lg-mobile text-[24px] font-bold text-primary tracking-tight">Settings</Text>
@@ -144,13 +147,19 @@ export default function SettingsScreen() {
                 <Icon name="chevron_right" size={20} color="#849495" />
               </TouchableOpacity>
               
-              <TouchableOpacity className="flex-row items-center justify-between p-card-padding border-b border-white/5 hover:bg-white/5 active:scale-[0.98]">
+              <TouchableOpacity 
+                onPress={() => {
+                  console.log('Navigating to subscription...');
+                  router.push('/subscription');
+                }}
+                className="flex-row items-center justify-between p-card-padding border-b border-white/5 hover:bg-white/5 active:scale-[0.98]"
+              >
                 <View className="flex-row items-center gap-4">
                   <Icon name="credit_card" size={24} color="#c2c6db" />
                   <Text className="text-on-surface font-body-md text-[16px]">Subscription</Text>
                 </View>
                 <View className="flex-row items-center gap-2">
-                  <Text className="text-on-surface-variant text-sm">Active</Text>
+                  <Text className="text-on-surface-variant text-sm">Free</Text>
                   <Icon name="chevron_right" size={20} color="#849495" />
                 </View>
               </TouchableOpacity>
